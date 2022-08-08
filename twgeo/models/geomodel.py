@@ -1,7 +1,7 @@
 import pickle
 import time
 from os import path, environ
-
+import tensorflow as tf
 import keras
 import numpy as np
 from keras.layers import Dense, Dropout, LSTM, Embedding
@@ -94,8 +94,8 @@ class Model:
         x_dev = self._tokenize_texts(x_dev)
         x_train = self._tokenize_texts(x_train)
 
-        y_train = keras.utils.to_categorical(y_train, num_classes=self._num_outputs)
-        y_dev = keras.utils.to_categorical(y_dev, num_classes=self._num_outputs)
+        y_train =tf.keras.utils.to_categorical(y_train, num_classes=self._num_outputs)
+        y_dev = tf.keras.utils.to_categorical(y_dev, num_classes=self._num_outputs)
 
         if self._use_tensorboard:
             callbacks = self._generate_callbacks()

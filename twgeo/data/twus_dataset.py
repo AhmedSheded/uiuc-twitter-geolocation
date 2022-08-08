@@ -9,7 +9,7 @@ import re
 import sys
 import time
 from os import path, makedirs
-
+import tensorflow as tf
 import keras
 import pandas as pd
 from nltk.stem import PorterStemmer
@@ -97,9 +97,9 @@ def load_region_data(size='large'):
 
 
 def _load_data():
-    temp_dev_data = keras.utils.get_file(_TWITTER_PARSED_DEV_DATA, _TWITTER_PARSED_DEV_DATA_DROPBOX)
-    temp_test_data = keras.utils.get_file(_TWITTER_PARSED_TEST_DATA, _TWITTER_PARSED_TEST_DATA_DROPBOX)
-    temp_train_data = keras.utils.get_file(_TWITTER_PARSED_TRAIN_DATA, _TWITTER_PARSED_TRAIN_DATA_DROPBOX)
+    temp_dev_data = tf.keras.utils.get_file(_TWITTER_PARSED_DEV_DATA, _TWITTER_PARSED_DEV_DATA_DROPBOX)
+    temp_test_data = tf.keras.utils.get_file(_TWITTER_PARSED_TEST_DATA, _TWITTER_PARSED_TEST_DATA_DROPBOX)
+    temp_train_data = tf.keras.utils.get_file(_TWITTER_PARSED_TRAIN_DATA, _TWITTER_PARSED_TRAIN_DATA_DROPBOX)
 
     with open(temp_dev_data, 'rb') as handle:
         dev_data = pickle.load(handle)
